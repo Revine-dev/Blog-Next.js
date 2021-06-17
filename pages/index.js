@@ -34,7 +34,7 @@ export default function Home(props) {
         <p>
           Hello, I’m <strong>Rémi Vinatier</strong>. I’m a web/mobile developer.
           You can contact me{" "}
-          <a href="https://www.revine.fr" target="_blank">
+          <a href="https://www.revine.fr" target="_blank" rel="noreferrer">
             on my own website
           </a>
           . (This is a sample website made to test Next.JS)
