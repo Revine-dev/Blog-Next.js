@@ -1,5 +1,7 @@
 import Head from "next/head";
 import data from "../api/blog.json";
+import Image from "next/image";
+import img from "../../assets/cat.jpeg";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -18,10 +20,12 @@ export default function Page({ article }) {
       <main>
         <div className="head title">
           <div className="round">
-            <img
-              src="https://wecareanimalrescue.org/wp-content/uploads/2018/03/AdobeStock_139467131-e1522009663289.jpeg"
-              alt="logo-cat"
+            <Image
+              src={img}
               className="logo"
+              alt="logo-cat"
+              width="100%"
+              height="100%"
             />
           </div>
           <h1>Rémi Vinatier</h1>
