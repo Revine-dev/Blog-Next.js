@@ -7,10 +7,63 @@ body {
 }
 
 a {
-  color: inherit;
+  color: navy;
   text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-decoration: underline;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.head.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.round {
+  margin-top: 30px;
+  width: 150px;
+  height: 150px;
+}
+
+main {
+  margin: auto 300px;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.blog .article {
+  margin-bottom: 30px;
+}
+
+.blog .title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.blog .published {
+  color: gray;
+  margin-top: 5px;
+}
+
+.blog .content {
+  margin-top: 20px;
+}
+
+.back {
+  margin-top: 20px;
+  display: block;
 }
