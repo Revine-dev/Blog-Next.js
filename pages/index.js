@@ -1,9 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import img from "../assets/cat.jpeg";
-import getServerSidesProps from "./api/blog";
+import loadData from "./api/blog";
 import Link from "next/link";
-import data from "./api/blog.json";
 
 export default function Home(props) {
   return (
@@ -64,14 +63,6 @@ export default function Home(props) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const items = data.map((item) => {
-    item.slug = item.title
-      .toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/[^\w-]+/g, "");
-    return item;
-  });
-
-  return { props: { articles: items } };
+export async function getStaticProps(context) {
+  return { props: { articles: loadData() } };
 }

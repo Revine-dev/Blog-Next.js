@@ -1,5 +1,5 @@
 import Head from "next/head";
-import data from "../api/blog.json";
+import getBlogData from "../api/blog";
 import Image from "next/image";
 import img from "../../assets/cat.jpeg";
 import Link from "next/link";
@@ -36,7 +36,7 @@ export default function Page({ article }) {
           <div className="published">{article.published}</div>
           <div className="content">{article.content}</div>
           <Link href="/">
-            <a className="back">Go back to home</a>
+            <a className="back">← Go back to home</a>
           </Link>
         </div>
       </main>
@@ -44,22 +44,20 @@ export default function Page({ article }) {
   );
 }
 
-export async function getServerSideProps({ req, res, locale, query, store }) {
-  const items = data.map((item) => {
-    item.slug = item.title
-      .toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/[^\w-]+/g, "");
-    return item;
+export async function getStaticPaths() {
+  const paths = getBlogData().map((article) => {
+    return {
+      params: {
+        name: article.slug,
+      },
+    };
   });
 
-  if (!query.name || !items.find((article) => article.slug === query.name)) {
-    return {
-      notFound: true,
-    };
-  }
+  return { paths, fallback: false };
+}
 
+export async function getStaticProps({ params }) {
   return {
-    props: { article: items.find((article) => article.slug === query.name) },
+    props: { article: getBlogData(params.name) },
   };
 }
