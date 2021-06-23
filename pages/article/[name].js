@@ -1,9 +1,8 @@
 import Head from "next/head";
-import getBlogData from "../api/blog";
+import getBlogData from "../../src/blog";
 import Image from "next/image";
 import img from "../../assets/cat.jpeg";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
 
 export default function Page({ article }) {

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import img from "../assets/cat.jpeg";
-import loadData from "./api/blog";
+import loadData from "../src/blog";
 import Link from "next/link";
 
 export default function Home(props) {

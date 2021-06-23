@@ -5,11 +5,8 @@ import matter from "gray-matter";
 export default function getBlogData(slug) {
   const items = [];
   try {
-    fs.readdirSync("./pages/api/articles").forEach((file) => {
-      const fileContents = fs.readFileSync(
-        "./pages/api/articles/" + file,
-        "utf8"
-      );
+    fs.readdirSync("./src/articles").forEach((file) => {
+      const fileContents = fs.readFileSync("./src/articles/" + file, "utf8");
       const { data, content } = matter(fileContents);
       items.push({
         title: data.title,
