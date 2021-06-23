@@ -4,6 +4,7 @@ import Image from "next/image";
 import img from "../../assets/cat.jpeg";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import ReactMarkdown from "react-markdown";
 
 export default function Page({ article }) {
   return (
@@ -34,7 +35,9 @@ export default function Page({ article }) {
         <div className="blog">
           <h2>{article.title}</h2>
           <div className="published">{article.published}</div>
-          <div className="content">{article.content}</div>
+          <div className="content">
+            <ReactMarkdown>{article.content}</ReactMarkdown>
+          </div>
           <Link href="/">
             <a className="back">← Go back to home</a>
           </Link>
@@ -45,7 +48,7 @@ export default function Page({ article }) {
 }
 
 export async function getStaticPaths() {
-  const paths = getBlogData().map((article) => {
+  const paths = getBlogData(true).map((article) => {
     return {
       params: {
         name: article.slug,
